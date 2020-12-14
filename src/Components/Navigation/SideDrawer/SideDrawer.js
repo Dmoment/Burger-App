@@ -1,0 +1,27 @@
+import React from 'react'
+import Logo from "../../Logo/Logo"
+import NavigationItems from "../NavigationItems/NavigationItems"
+import classes from "./SideDrawer.module.css"
+import Backdrop from "../../UI/Backdrop/Backdrop"
+
+
+const SideDrawer =(props)=>{
+    let attachedClasses =[classes.SideDrawer, classes.Close]
+    if(props.open){
+        attachedClasses=[classes.SideDrawer, classes.open]
+    }
+    return(
+        <React.Fragment>
+        <Backdrop show={props.open} clicked={props.closed}/>
+        {props.open}
+        <div className={attachedClasses.join(" ")}>
+            <Logo height="8%"/>
+            <nav >
+                <NavigationItems />
+            </nav>
+        </div>
+        </React.Fragment>
+    )
+}
+
+export default SideDrawer
